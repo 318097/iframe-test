@@ -1,0 +1,48 @@
+{
+  "name": "Quick Switch",
+  "version": "1.0",
+  "description": "Speed dial for chrome",
+  "manifest_version": 2,
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "./build/script.js"
+      ]
+    }
+  ],
+  "commands": {
+    "toggle-app": {
+      "suggested_key": {
+        "default": "Ctrl+J"
+      },
+      "description": "Toggle quick switch app"
+    },
+    "cycle-same-domain-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+K"
+      },
+      "description": "Cycle between same domain tabs"
+    },
+    "cycle-favorite-tabs": {
+      "suggested_key": {
+        "default": "Ctrl+K"
+      },
+      "description": "Cycle between favorite tabs"
+    }
+  }
+}

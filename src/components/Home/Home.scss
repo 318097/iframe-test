@@ -1,0 +1,62 @@
+@import "@codedrops/react-ui/dist/styles/colors.scss";
+
+.quick-switch-container {
+  .shortcut-list-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+    overflow-y: overlay;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 12px;
+    flex-grow: 1;
+    grid-auto-rows: min-content;
+  }
+
+  .shortcut-container {
+    font-family: "Roboto Mono", monospace;
+    display: flex;
+    gap: 12px;
+    background: $featherDark;
+    border: 1px solid $strokeOne;
+    align-items: center;
+    border-radius: 2px;
+    cursor: pointer;
+    &:hover,
+    &.highlight {
+      background: $strokeOne;
+    }
+  }
+  .shortcut-key {
+    font-size: 1.6rem;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $green;
+    text-transform: uppercase;
+    color: white;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-grow: 1;
+    color: $iron;
+    .shortcut-name {
+      // text-transform: capitalize;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      // font-size: 14px;
+      font-weight: bold;
+    }
+    .shortcut-url {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
