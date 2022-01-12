@@ -1,14 +1,17 @@
 import React from "react";
+import { Card } from "@codedrops/react-ui";
 import "./App.scss";
-import AppContent from "./components/AppContent";
-import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./components/Home";
 
 const App = () => (
-  <BrowserRouter>
-    <div className="react-ui">
-      <AppContent />
-    </div>
-  </BrowserRouter>
+  <Card className="quick-switch-container" hover={false}>
+    <Header />
+    <Home />
+    {/* {(initLoading || appLoading) && (
+        <Loading type="dot-loader" background="white" />
+      )} */}
+  </Card>
 );
 
 export default App;
