@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const CopyPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 require("dotenv").config();
 
@@ -15,6 +16,10 @@ module.exports = (env) => {
   const outputFolder = MODE === "app" ? "build" : "ext/build";
 
   const plugins = [
+    {
+      visible: true,
+      plugin: new MiniCssExtractPlugin(),
+    },
     {
       visible: true,
       plugin: new webpack.DefinePlugin({
@@ -57,6 +62,18 @@ module.exports = (env) => {
       open: true,
       historyApiFallback: true,
     },
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: "styles",
+            type: "css/mini-extract",
+            chunks: "all",
+            enforce: true,
+          },
+        },
+      },
+    },
     module: {
       rules: [
         {
@@ -66,11 +83,20 @@ module.exports = (env) => {
         },
         {
           test: /\.scss$/,
-          use: ["style-loader", "css-loader", "sass-loader"],
+          use: [
+            MiniCssExtractPlugin.loader,
+            // "style-loader",
+            "css-loader",
+            "sass-loader",
+          ],
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: [
+            MiniCssExtractPlugin.loader,
+            // "style-loader",
+            "css-loader",
+          ],
         },
         {
           test: /\.(ttf|otf)$/,
