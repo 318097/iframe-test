@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "@codedrops/react-ui";
 import "./Home.scss";
 
 const shortcuts = [
@@ -13,6 +14,9 @@ const shortcuts = [
 const Home = () => {
   return (
     <section>
+      <div>
+        <Button>Codedrops</Button>
+      </div>
       {shortcuts.length ? (
         <div className="shortcut-list-container">
           {shortcuts.map((item) => {
